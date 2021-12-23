@@ -1,16 +1,18 @@
-version: '2'
+version: "3.7"
 
 services:
   jenkins:
-    container_name: 'jenkins'
     image: jenkins/jenkins:2.326
+    container_name: 'jenkins'
+    restart: always
     ports:
       - '80:8080'
-    environment:
-      - JENKINS_PASSWORD=123456@Xx
     volumes:
-      - 'jenkins_data:/opt/jenkins'
-
+      - 'jenkins_data:/var/jenkins_home'
+    logging:
+      options:
+        max-size: '300m'
+        max-file: '5'
 volumes:
   jenkins_data:
     driver: local
