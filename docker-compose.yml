@@ -9,6 +9,8 @@ services:
       - '80:8080'
     volumes:
       - 'jenkins_data:/var/jenkins_home'
+      - '/usr/local/bin:/home/nqd/workspace/verik/cd/jenkins-docker-compose/bin'
+      - "/var/run/docker.sock:/var/run/docker.sock"
     logging:
       options:
         max-size: '300m'
